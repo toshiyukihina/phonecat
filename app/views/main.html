@@ -1,0 +1,27 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#">About</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">phonecat</h3>
+</div>
+
+<div ng-controller="PhoneListCtrl">
+  <p>Tatal number of phones: {{phones.length}}</p>
+  <ul>
+    <li ng-repeat="phone in phones">
+      {{phone.name}}
+      <p>{{phone.snippet}}</p>
+    </li>
+  </ul>
+  <p>Hello {{name}}!</p>
+  <table class="table table-condensed">
+    <tr><th>row number</th></tr>
+    <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"><td>{{i + 1}}</td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  <p><span class="glyphicon glyphicon-heart"></span> from the Inventit team</p>
+</div>
