@@ -11,11 +11,17 @@
   <div class="row">
     <div class="col-md-2">
       Search: <input type="text" ng-model="query">
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="name">Alphabetical</option>
+        <option value="age">Newest</option>
+      </select>
     </div>
     <div class="col-md-10">
       <ul class="phones">
         <p><b>Result: {{query}}</b></p>
-        <li ng-repeat="phone in phones | filter:query">
+        <p><b>Sort by: {{orderProp}}</b></p>
+        <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
           {{phone.name}}
           <p>{{phone.snippet}}</p>
         </li>

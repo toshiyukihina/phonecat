@@ -21,12 +21,13 @@ describe('Controller: MainCtrl', function () {
 });
 
 describe('PhoneListCtrl', function() {
-  beforeEach(module('phonecatApp'));
-
   var ctrl, scope;
 
-  beforeEach(inject(function($controller, $rootScope) {
-    scope = $rootScope.$new();
+  beforeEach(module('phonecatApp'));
+
+  beforeEach(inject(function($controller) {
+    //scope = $rootScope.$new();
+    scope = {};
     ctrl = $controller('PhoneListCtrl', { $scope: scope });
   }));
 
@@ -36,5 +37,9 @@ describe('PhoneListCtrl', function() {
 
   it ('should create "name" model with "world"', function() {
     expect(scope.name).toBe('world');
+  });
+
+  it ('should set the default value of orderProp model', function() {
+    expect(scope.orderProp).toBe('age');
   });
 });
