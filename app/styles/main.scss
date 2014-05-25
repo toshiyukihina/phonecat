@@ -93,3 +93,22 @@ body {
         border-bottom: 0;
     }
 }
+
+.phones {
+  list-style: none;
+}
+
+.thumb {
+  float: left;
+  margin: -0.5em 1em 1.5em 0;
+  padding-top: 1em;
+  padding-bottom: 0em;
+  height: 50px;
+  width: 50px;
+}
+
+.phones li {
+  clear: both;
+  height: 115px;
+  padding-top: 15px;
+}
