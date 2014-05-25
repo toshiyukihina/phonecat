@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('phonecatApp', [
-    'ngCookies',
-    'ngResource',
-    'ngSanitize',
-    'ngRoute'
-  ])
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ngRoute',
+  'ngAnimate'
+])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/phones', {
