@@ -14,6 +14,14 @@ angular.module('phonecatApp')
     $scope.orderProp = 'age';
     $scope.name = 'world';
   }])
-  .controller('PhoneDetailCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+  .controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
     $scope.phoneId = $routeParams.phoneId;
+    $http.get('phones/' + $routeParams.phoneId + '.json')
+      .success(function(data) {
+        console.log('Phone\'s detail data fetched successfully.');
+        $scope.phone = data;
+      })
+      .error(function() {
+        console.error('Failed to fetch phone\'s detail data.');
+      });
   }]);
