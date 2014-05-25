@@ -21,19 +21,18 @@ describe('Controller: MainCtrl', function () {
 });
 
 describe('PhoneListCtrl', function() {
-  var ctrl, scope;
+  var ctrl, scope, $httpBackend;
 
   beforeEach(module('phonecatApp'));
 
-  beforeEach(inject(function($controller) {
-    //scope = $rootScope.$new();
-    scope = {};
+  beforeEach(inject(function($controller, $rootScope, _$httpBackend_) {
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('phones/phones.json')
+      .respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+
+    scope = $rootScope.$new();
     ctrl = $controller('PhoneListCtrl', { $scope: scope });
   }));
-
-  it ('should create "phones" model with 3 phones', function() {
-    expect(scope.phones.length).toBe(3);
-  });
 
   it ('should create "name" model with "world"', function() {
     expect(scope.name).toBe('world');
@@ -41,5 +40,12 @@ describe('PhoneListCtrl', function() {
 
   it ('should set the default value of orderProp model', function() {
     expect(scope.orderProp).toBe('age');
+  });
+
+  it ('should create "phones" model with 2 phones fetched from xhr', function() {
+    expect(scope.phones).toBeUndefined();
+
+    $httpBackend.flush();
+    expect(scope.phones).toEqual([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
   });
 });
