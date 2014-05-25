@@ -7,19 +7,21 @@
   <h3 class="text-muted">phonecat</h3>
 </div>
 
-<div ng-controller="PhoneListCtrl">
-  <p>Tatal number of phones: {{phones.length}}</p>
-  <ul>
-    <li ng-repeat="phone in phones">
-      {{phone.name}}
-      <p>{{phone.snippet}}</p>
-    </li>
-  </ul>
-  <p>Hello {{name}}!</p>
-  <table class="table table-condensed">
-    <tr><th>row number</th></tr>
-    <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"><td>{{i + 1}}</td></tr>
-  </table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      Search: <input type="text" ng-model="query">
+    </div>
+    <div class="col-md-10">
+      <ul class="phones">
+        <p><b>Result: {{query}}</b></p>
+        <li ng-repeat="phone in phones | filter:query">
+          {{phone.name}}
+          <p>{{phone.snippet}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="footer">
