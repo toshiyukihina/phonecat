@@ -1,7 +1,6 @@
 'use strict';
 
-angular
-  .module('phonecatApp', [
+angular.module('phonecatApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
@@ -20,4 +19,9 @@ angular
       .otherwise({
         redirectTo: '/phones'
       });
+  })
+  .filter('checkmark', function() {
+    return function(input) {
+      return input ? '\u2713' : '\u2718';
+    };
   });

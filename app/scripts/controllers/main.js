@@ -13,6 +13,7 @@ angular.module('phonecatApp')
       });
     $scope.orderProp = 'age';
     $scope.name = 'world';
+    $scope.now = new Date();
   }])
   .controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
     $scope.phoneId = $routeParams.phoneId;
