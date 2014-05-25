@@ -21,8 +21,12 @@ angular.module('phonecatApp')
       .success(function(data) {
         console.log('Phone\'s detail data fetched successfully.');
         $scope.phone = data;
+        $scope.mainImageUrl = data.images[0];
       })
       .error(function() {
         console.error('Failed to fetch phone\'s detail data.');
       });
+    $scope.setImage = function(imageUrl) {
+      $scope.mainImageUrl = imageUrl;
+    };
   }]);
